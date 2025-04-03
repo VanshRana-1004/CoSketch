@@ -19,7 +19,6 @@ interface params{
     isSignin : boolean
 }
 export function AuthPage(props : params){
-    console.log(BACKEND_URL);
     const nameRef=useRef<HTMLInputElement>(null);
     const emailRef=useRef<HTMLInputElement>(null);
     const passwordRef=useRef<HTMLInputElement>(null);
