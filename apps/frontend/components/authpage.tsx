@@ -2,7 +2,7 @@
 import { CancelIcon } from "@/icons/cancel";
 import { CloseEyeIcon } from "@/icons/closeeye";
 import { OpenEyeIcon } from "@/icons/openeye";
-import axios,{AxiosError} from "axios";
+import axios from "axios";
 import React, { useRef, useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -116,7 +116,7 @@ export function AuthPage(props : params){
                     theme:'dark'
                 })
             }
-            catch(e : any){
+            catch(e){
                 if (axios.isAxiosError(e)) {
                     if(e.message=='Request failed with status code 401'){
                         toast.error('Incorrect format.', {
