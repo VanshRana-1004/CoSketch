@@ -60,7 +60,7 @@ wss.on('connection',function connection(ws,request){
                     where:{
                         roomId:roomId
                     }
-                }).catch(err=>console.error('Error in clearing data of a room.'))
+                })
                 UserArr.forEach(user=>{
                     if(user.rooms.includes(String(roomId))){
                         user.ws.send(JSON.stringify({
@@ -88,7 +88,7 @@ wss.on('connection',function connection(ws,request){
                         userId: userAuthentication,
                         roomId: roomId,
                     }
-                }).catch(err=>console.error("DataBase entry Error"));
+                })
                 UserArr.forEach(user=>{
                     if(user.rooms.includes(String(roomId))){
                         user.ws.send(JSON.stringify({
@@ -110,13 +110,13 @@ wss.on('connection',function connection(ws,request){
                                 contains:JSON.stringify(chatId)
                             }
                         }
-                    }).catch(err=>console.error('Error in founding Id.'));
+                    })
                     if(Id){
                         await prismaClient.chat.delete({
                             where:{
                                 id:Number(Id.id)
                             }
-                        }).catch(err=>console.error('Error in deleting chat'))
+                        })
                         UserArr.forEach(user=>{
                             if(user.rooms.includes(String(roomId))){
                                 user.ws.send(JSON.stringify({
@@ -141,7 +141,7 @@ wss.on('connection',function connection(ws,request){
                                 contains:JSON.stringify(chatId)
                             }
                         }
-                    }).catch(err=>console.error('Error in founding Id.'))
+                    })
                     if(Id){
                         await prismaClient.chat.update({
                             where:{
@@ -150,7 +150,7 @@ wss.on('connection',function connection(ws,request){
                             data:{
                                 message:JSON.stringify(shape)
                             }
-                        }).catch(err=>console.error('Error in updating chat'))
+                        })
                         UserArr.forEach(user=>{
                             if(user.rooms.includes(String(roomId))){
                                 user.ws.send(JSON.stringify({
