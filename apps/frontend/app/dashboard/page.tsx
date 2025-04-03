@@ -4,7 +4,7 @@ import { LogoutIcon } from "@/icons/logout"
 import { PlusIcon } from "@/icons/plus"
 import {useRouter} from "next/navigation"
 import { useEffect, useState,useRef } from "react"
-import axios from "axios"
+import axios, {AxiosError} from "axios"
 import { TrashIcon } from "@/icons/bin"
 import { CopyIcon } from "@/icons/copy"
 import { CancelIcon } from "@/icons/cancel"
@@ -101,31 +101,34 @@ export default function DashBoard(){
                 autoClose: 3000,
                 theme:"dark"
             })
-        }catch(e : any){
+        }catch(e){
             toast.dismiss(loadingToast);
-            if(e.message=='Request failed with status code 403'){
-                toast.error('room with the same name already exists.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
-            }
-            else if(e.message=='Request failed with status code 404'){
-                toast.error('room must have some name.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
-            }
-            else if(e.massage=='Request failed with status code 401'){
-                toast.error('Unknown server error, unable to create room.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
-            }
-            console.log(e.message);
-            console.log('error while creating room : '+e);
+
+            if (axios.isAxiosError(e)) {
+                if(e.message=='Request failed with status code 403'){
+                    toast.error('room with the same name already exists.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
+                else if(e.message=='Request failed with status code 404'){
+                    toast.error('room must have some name.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
+                else if(e.message=='Request failed with status code 401'){
+                    toast.error('Unknown server error, unable to create room.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
+                console.log(e.message);
+                console.log('error while creating room : '+e);
+                }
         }
         setSpinner(false);
     }
@@ -158,23 +161,24 @@ export default function DashBoard(){
                 autoClose: 3000,
                 theme:"dark"
             })
-        }catch(e : any){
-            
+        }catch(e){
             toast.dismiss(loadingToast);
-            setSpinner(false);
-            if(e.response.status==404){
-                toast.error('unable to find room.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
-            }
-            else if(e.response.status==403){
-                toast.error('unable to join room.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
+            if (axios.isAxiosError(e)) {
+                setSpinner(false);
+                if(e.response?.status==404){
+                    toast.error('unable to find room.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
+                else if(e.response?.status==403){
+                    toast.error('unable to join room.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
             }
             console.log('error while joining room : '+e);
         }
@@ -206,22 +210,23 @@ export default function DashBoard(){
                 autoClose: 3000,
                 theme:"dark"
             })
-        }catch(e : any){
+        }catch(e){
             toast.dismiss(loadingToast);
-
-            if(e.message=='Request failed with status code 404'){
-                toast.error('unable to find room.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
-            }
-            else {
-                toast.error('server error, unable to delete room.', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme:"dark"
-                })
+            if (axios.isAxiosError(e)) {
+                if(e.message=='Request failed with status code 404'){
+                    toast.error('unable to find room.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
+                else {
+                    toast.error('server error, unable to delete room.', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        theme:"dark"
+                    })
+                }
             }
             console.log('error while deleting room : '+e);
         }

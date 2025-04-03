@@ -2,7 +2,7 @@
 import { CancelIcon } from "@/icons/cancel";
 import { CloseEyeIcon } from "@/icons/closeeye";
 import { OpenEyeIcon } from "@/icons/openeye";
-import axios from "axios";
+import axios,{AxiosError} from "axios";
 import React, { useRef, useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -19,7 +19,7 @@ interface params{
     isSignin : boolean
 }
 export function AuthPage(props : params){
-
+    console.log(BACKEND_URL);
     const nameRef=useRef<HTMLInputElement>(null);
     const emailRef=useRef<HTMLInputElement>(null);
     const passwordRef=useRef<HTMLInputElement>(null);
@@ -52,50 +52,52 @@ export function AuthPage(props : params){
                     theme:"dark"
                 })
             }
-            catch(e : any){
-                if(e.status==500){
-                    toast.error('Server crashed.', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
+            catch(e){
+                if (axios.isAxiosError(e)) {
+                    if(e.status==500){
+                        toast.error('Server crashed.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    if(e.message=='Request failed with status code 401'){
+                        toast.error('Incorrect format.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    else if(e.message=='Request failed with status code 402'){ 
+                        toast.error('server error please try again later.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }  
+                    else if(e.message=='Request failed with status code 403'){
+                        toast.error('user not found.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    else if(e.message=='Request failed with status code 405'){
+                        toast.error('Wrong password', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    else if(e.message=='Request failed with status code 404'){
+                        toast.error('Unknown Server Error.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    console.log('error : '+e.message);
                 }
-                if(e.message=='Request failed with status code 401'){
-                    toast.error('Incorrect format.', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
-                }
-                else if(e.message=='Request failed with status code 402'){ 
-                    toast.error('server error please try again later.', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
-                }  
-                else if(e.message=='Request failed with status code 403'){
-                    toast.error('user not found.', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
-                }
-                else if(e.message=='Request failed with status code 405'){
-                    toast.error('Wrong password', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
-                }
-                else if(e.message=='Request failed with status code 404'){
-                    toast.error('Unknown Server Error.', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        theme:"dark"
-                    })
-                }
-                console.log('error : '+e.message);
             }
         }
         else{
@@ -110,31 +112,36 @@ export function AuthPage(props : params){
                 router.push('/signin')
                 toast.success('signed up successfully!', {
                     position: "top-center",
-                    autoClose: 3000
+                    autoClose: 3000,
+                    theme:'dark'
                 })
             }
             catch(e : any){
-                if(e.message=='Request failed with status code 401'){
-                    toast.error('Incorrect format.', {
-                        position: "top-center",
-                        autoClose: 3000
-                    })
+                if (axios.isAxiosError(e)) {
+                    if(e.message=='Request failed with status code 401'){
+                        toast.error('Incorrect format.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    else if(e.message=='Request failed with status code 403'){ 
+                        toast.error('user with the same email id already exists.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }  
+                    else if(e.message=='Request failed with status code 404'){
+                        toast.error('Unknown server error please try again later.', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            theme:"dark"
+                        })
+                    }
+                    console.log('error : '+e.message);  
+                    console.log('error : '+e.message);
                 }
-                else if(e.message=='Request failed with status code 403'){ 
-                    toast.error('user with the same email id already exists.', {
-                        position: "top-center",
-                        autoClose: 3000
-                    })
-                }  
-                else if(e.message=='Request failed with status code 404'){
-                    toast.error('Unknown server error please try again later.', {
-                        position: "top-center",
-                        autoClose: 3000
-                    })
-                }
-                
-                console.log('error : '+e.message);  
-                console.log('error : '+e.message);
             }
         }
         setSpinner(false);

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react"
+import { useEffect,  useState } from "react"
 import { WS_URL } from "@/config";
 import { Canvas } from "./canvas";
 import dynamic from "next/dynamic";

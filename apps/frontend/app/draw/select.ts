@@ -1,7 +1,6 @@
 import { Shape } from "./game";
 
 export function selectedShape(socket : WebSocket,existingShapes : Shape[],ctx : CanvasRenderingContext2D,x : number,y : number) : string{
-    let deleteChat : string;
     for(let i=0;i<existingShapes.length;i++){
         const shape=existingShapes[i];
         let left = -1, right = -1, top = -1, bottom = -1;

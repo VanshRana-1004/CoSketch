@@ -34,7 +34,7 @@ function sendMsg(socket : WebSocket,roomId : number | string,deleteChat : string
 }
 
 export function eraser_Shape(socket : WebSocket,existingShapes : Shape[],ctx : CanvasRenderingContext2D,x : number,y : number,roomId : number | string) : string[]{
-    let deleteChat : string[]=[];
+    const deleteChat : string[]=[];
     for(let i=0;i<existingShapes.length;i++){
         const shape=existingShapes[i];
         if(shape.type==='rectangle'){
@@ -98,7 +98,7 @@ export function eraser_Shape(socket : WebSocket,existingShapes : Shape[],ctx : C
         }
         else if(shape.type==='pencil'){
             if(shape?.points){
-                let points=shape.points;
+                const points=shape.points;
                 for(let j=0;j<points?.length-1;j++){
                     if(isMouseOverLine(points[j].x,points[j].y,points[j+1].x,points[j+1].y,x,y)){
                         sendMsg(socket,roomId,shape.chatId);

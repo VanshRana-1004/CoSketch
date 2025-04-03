@@ -204,7 +204,7 @@ export class Game{
 
     putInput(){
         const input = document.createElement('input');
-        let width = this.canvas.width-this.startX;
+        const width = this.canvas.width-this.startX;
         input.type = 'text';
         input.style.position = 'absolute';
         input.style.left = this.startX + 'px';
@@ -560,18 +560,18 @@ export class Game{
                     this.ctx.stroke();
                 }
                 else if(this.type==='eraser'){
-                    let rect=this.canvas.getBoundingClientRect();
-                    let x=e.clientX-rect.left;
-                    let y=e.clientY-rect.top;
-                    let shapeId : string[] = eraser_Shape(this.socket,this.existingShapes,this.ctx,x,y,this.roomId);
+                    const rect=this.canvas.getBoundingClientRect();
+                    const x=e.clientX-rect.left;
+                    const y=e.clientY-rect.top;
+                    const shapeId : string[] = eraser_Shape(this.socket,this.existingShapes,this.ctx,x,y,this.roomId);
                     this.existingShapes = this.existingShapes.filter(x=>!shapeId.includes(x.chatId));
                     this.clearCanvas();
                 }
                 else if(this.type==='select'){
                     if(this.seletedShapeChatId!=='' && this.offsetX!=-1 && this.offsetY!=-1){
-                        let rect=this.canvas.getBoundingClientRect();
-                        let x=e.clientX-rect.left;
-                        let y=e.clientY-rect.top;
+                        const rect=this.canvas.getBoundingClientRect();
+                        const x=e.clientX-rect.left;
+                        const y=e.clientY-rect.top;
                         const shape=this.existingShapes.find(x=>x.chatId===this.seletedShapeChatId);
                         if(shape){
                             const deltaX=x-this.offsetX;

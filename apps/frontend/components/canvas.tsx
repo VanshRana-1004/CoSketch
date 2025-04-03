@@ -239,11 +239,11 @@ export function Canvas(props : params){
                         <p className='text-sm mb-2 tracking-wide'>Stroke Color</p>
                         <div className='flex gap-2'>
                             <div className='flex gap-1 pr-2 border-r-2 '>
-                            <div onClick={()=>{setStrokeColor('#f44336'),setStColor('red-500')}} className={`bg-red-500 rounded w-6 h-6  hover:cursor-pointer`}></div>
-                            <div onClick={()=>{setStrokeColor('#4caf50'),setStColor('green-500')}} className={`bg-green-500 rounded w-6 h-6  hover:cursor-pointer`}></div>
-                            <div onClick={()=>{setStrokeColor('#2196f3'),setStColor('blue-500')}} className={`bg-blue-500 rounded w-6 h-6  hover:cursor-pointer`}></div>
-                            <div onClick={()=>{setStrokeColor('#fff500'),setStColor('yellow-500')}} className={`bg-yellow-500 rounded w-6 h-6  hover:cursor-pointer`}></div>
-                            <div onClick={()=>{setStrokeColor('#ffffff'),setStColor('white')}} className={`bg-white rounded w-6 h-6  hover:cursor-pointer`}></div>
+                            <div onClick={() => { setStrokeColor('#f44336'); setStColor('red-500'); }} className="bg-red-500 rounded w-6 h-6 hover:cursor-pointer"></div>
+                            <div onClick={() => { setStrokeColor('#4caf50'); setStColor('green-500'); }} className="bg-green-500 rounded w-6 h-6 hover:cursor-pointer"></div>
+                            <div onClick={() => { setStrokeColor('#2196f3'); setStColor('blue-500'); }} className="bg-blue-500 rounded w-6 h-6 hover:cursor-pointer"></div>
+                            <div onClick={() => { setStrokeColor('#fff500'); setStColor('yellow-500'); }} className="bg-yellow-500 rounded w-6 h-6 hover:cursor-pointer"></div>
+                            <div onClick={() => { setStrokeColor('#ffffff'); setStColor('white'); }} className="bg-white rounded w-6 h-6 hover:cursor-pointer"></div>
                             </div>
                             <div className={`bg-${stColor} rounded w-6 h-6`}/>
                         </div>

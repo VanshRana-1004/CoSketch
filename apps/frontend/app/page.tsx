@@ -1,6 +1,4 @@
 "use client"
-import { TrashIcon } from '@/icons/bin';
-import { BulbIcon } from '@/icons/bulb';
 import { CloudIcon } from '@/icons/cloud';
 import { GroupIcon } from '@/icons/grp';
 import { LightIcon } from '@/icons/lighting';
@@ -14,7 +12,6 @@ import { useEffect,useState } from 'react';
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { GithubIcon } from '@/icons/github';
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -66,7 +63,6 @@ export default function Landing() {
       alt:'dashboard'
     }
   ]
-  const style=`object-cover h-full w-full`;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
