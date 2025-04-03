@@ -40,10 +40,12 @@ export default function DashBoard(){
     const [logout,setLogout]=useState(false);
     const [remove,setRemove]=useState(-1); 
     const [spinner,setSpinner]=useState(false);
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
     
 
     useEffect(() => {
+        setWidth(window.innerWidth);
+        
         const handleResize = () => setWidth(window.innerWidth);
         
         window.addEventListener("resize", handleResize);
@@ -428,10 +430,12 @@ function Room(props : params){
 
     const router=useRouter();
     const [people,setPeople]=useState(false); 
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
     const [check,setCheck]=useState(false);
 
     useEffect(() => {
+        setWidth(window.innerWidth);
+        
         const handleResize = () => setWidth(window.innerWidth);
         
         window.addEventListener("resize", handleResize);

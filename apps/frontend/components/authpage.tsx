@@ -26,9 +26,11 @@ export function AuthPage(props : params){
     const [type,setType]=useState('password');
     const router=useRouter();
     const [spinner,setSpinner]=useState(false);
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
     
     useEffect(() => {
+        setWidth(window.innerWidth);
+        
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);

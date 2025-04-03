@@ -34,9 +34,10 @@ export default function Landing() {
     });
   }, []);
 
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
     useEffect(() => {
+        setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
         
         window.addEventListener("resize", handleResize);
@@ -217,9 +218,11 @@ interface params{
 
 function Box(props : params){
   
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
     useEffect(() => {
+        setWidth(window.innerWidth);
+        
         const handleResize = () => setWidth(window.innerWidth);
         
         window.addEventListener("resize", handleResize);
