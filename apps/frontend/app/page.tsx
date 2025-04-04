@@ -91,7 +91,9 @@ export default function Landing() {
           <a href="#features" className='p-1 px-4 rounded-2xl hover:bg-zinc-700 hover:cursor-pointer tracking-wider'>Features</a>
           }
           {width>=768 && 
-          <div className='p-1 px-4 rounded-2xl hover:bg-zinc-700 hover:cursor-pointer tracking-wider'>Github</div>
+          <a
+          href="https://github.com/VanshRana-1004/CoSketch" target="_blank" 
+          className='p-1 px-4 rounded-2xl hover:bg-zinc-700 hover:cursor-pointer tracking-wider'>Github</a>
           }
           <div onClick={()=>{
             router.push('/signin')

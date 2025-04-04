@@ -69,7 +69,7 @@ export function AuthPage(props : params){
                             theme:"dark"
                         })
                     }
-                    else if(e.message=='Request failed with status code 402'){ 
+                    else if(e.message=='Request failed with status code 402'+e){ 
                         toast.error('server error please try again later.', {
                             position: "top-center",
                             autoClose: 3000,
@@ -178,7 +178,7 @@ export function AuthPage(props : params){
                 <div className="flex flex-col gap-2">
                     <div className={`font-semibold text-xl font-sans tracking-wider text-zinc-100 ${width<540 && 'text-sm'}`}>Password</div>
                     <div className="flex p-2 bg-zinc-700 rounded justify-between focus:ring-1 focus:outline-white group focus-within:ring-1 focus-within:ring-white">
-                        <input ref={passwordRef} className="bg-zinc-700 w-full rounded placeholder:tracking-wide tracking-wide focus:ring-0 focus:outline-none" type={type} placeholder={`${props.isSignin?'Enter your password':'Create your password'}`}/>
+                        <input ref={passwordRef} className="bg-zinc-700 w-full rounded placeholder:tracking-wide tracking-wide focus:ring-0 focus:outline-none" type={type} placeholder={`${props.isSignin?'Enter your password':'At least 8 chars'}`}/>
                         <div className="hover:bg-zinc-800 hover:cursor-pointer rounded-full " onClick={()=>{
                             if(type=='password') setType('type')
                             else setType('password')

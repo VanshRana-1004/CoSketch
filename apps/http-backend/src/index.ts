@@ -1,5 +1,4 @@
 import express from "express";
-import z, { string } from "zod";
 import jwt from "jsonwebtoken";
 import cors from "cors";
 import { middleware } from "./middleware";
