@@ -1,6 +1,12 @@
 # CoSketch
 
+CoSketch is a real-time collaborative drawing application designed to make sketching with others seamless and interactive. Users can create accounts, join shared rooms, and draw together on a shared canvas in real time. The app is built using a modern and efficient tech stack, including Next.js for the frontend, Express.js for the backend, and PostgreSQL managed through Prisma ORM for robust and scalable data handling.
 
+To enable smooth and responsive updates between users, CoSketch utilizes WebSockets, ensuring changes on the canvas appear instantly for all collaborators. The app features a sleek dark-themed user interface that enhances the drawing experience, especially in low-light environments. It also supports cross-device compatibility, allowing users to collaborate effortlessly from desktops, tablets, or phones.
+
+Built with pnpm for faster and more efficient package management, CoSketch emphasizes performance and developer productivity. Whether you're brainstorming ideas, working on a design, or just doodling for fun, CoSketch offers a powerful and intuitive platform for teamwork.
+
+We’d love to hear your thoughts—feedback is always welcome as we continue to improve!
 
 # Turborepo starter
 
