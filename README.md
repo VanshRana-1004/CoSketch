@@ -92,7 +92,4 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-=======
-# monorepo-setup
->>>>>>> de4742974641d9f2b57fab03162258212f3a8353
->>>>>>> 98125d0 (Initial commit)
+
